@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/output.css">
+</head>
+<body>
+
+  <style>
+    .hide{
+      display: none;
+    }
+  </style>
+
+    <!-- FORM START -->
+   
+
+<section class="bg-white">
+  <img src="./images/icon.png" alt="Icon" class="absolute top-0 left-0 z-50 m-4 h-10 w-10">
+  <div class="mx-auto max-w-screen-xl px-2 py-16 sm:px-6 lg:px-8 ">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="lg:col-span-2 lg:pt-16">
+          <h3 class="text-center text-2xl text-zinc-500 font-bold">Formulir pendaftaran asisten dan programmer lab manajement</h3><br>
+  
+          <div class="mt-8">
+          
+
+          </div>
+
+          <div class="mt-96">
+          <div class="text-center flex justify-center sm:text-left">
+            <h1 class="text-2xl  text-black sm:text-3xl text-center font-bold font-lalezar flex items-center space-x-2">
+              Oprec <img src="./images/Ellipse_4.png" alt="" class="inline-block h-8 w-8 ml-2">
+              <span class="text-customPurple">Mamen</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+        <h3 class="text-center text-2xl text-zinc-500 font-bold">Isi data-data dibawah dengan lengkap</h3><br>
+        <form action="/tambah" method="post" class="space-y-4">
+          <div>
+            <label class=" text-md font-medium text-gray-700"  for="inputNamaBarang">Nama lengkap</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm bg-slate-100 shadow-md"
+              placeholder="Masukan nama lengkap"
+              type="text"
+              name="nama"
+              required
+            />
+          </div>
+
+          <div>
+            <label class=" text-md font-medium text-gray-700"  for="inputNamaBarang">Email</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm bg-slate-100 shadow-md"
+              placeholder="Masukan Email"
+              type="text"
+              name="nama"
+              required
+            />
+          </div>
+
+          <div>
+            <label class=" text-md font-medium text-gray-700"  for="inputNamaBarang">No Telpon</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm bg-slate-100 shadow-md"
+              placeholder="Masukan no telp"
+              type="text"
+              name="nama"
+              required
+            />
+          </div>
+
+          <div>
+            <label class=" text-md font-medium text-gray-700"  for="inputNamaBarang">Jurusan</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm bg-slate-100 shadow-md"
+              placeholder="Masukan Jurusan"
+              type="text"
+              name="nama"
+              required
+            />
+          </div>
+
+          <div>
+            <label class=" text-md font-medium text-gray-700"  for="inputNamaBarang">Kelas</label>
+            <input
+              class="w-full rounded-lg border-gray-200 p-3 text-sm bg-slate-100 shadow-md"
+              placeholder="Masukan Kelas"
+              type="text"
+              name="nama"
+              required
+            />
+          </div>
+
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              
+              
+            </div>
+
+            <div>
+              
+            </div>
+          </div>
+
+          <div class="mt-4 justify-center flex">
+            <input
+              type="submit"
+              value="Mendaftar"
+              class="inline-block shrink-0 rounded-md border shadow-md border-customOrange bg-customOrange px-64 py-3  text-xl font-medium text-white transition hover:bg-zinc-600 hover:text-yellow-400 focus:outline-none focus:ring active:bg-zinc-600 duration-300 ease-in-out"
+            >
+            </input>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add a div for the popup -->
+<div id="popup" class=" fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center hide" >
+  <div class="bg-white p-4 rounded-md">
+    <h2 class="text-lg font-bold">Purchase Complete!</h2>
+    <p class="text-md">Your order has been successfully placed.</p>
+    <button id="close-popup" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-36 rounded-md">Complete</button>
+  </div>
+</div>
+
+    <!-- FORM FINISH -->
+
+    
+    <script src="/js/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      const product = JSON.parse(localStorage.getItem('selectedProduct'));
+      if (product) {
+        document.getElementById('namaBarang').value = product.brand;
+        document.getElementById('hargaBarang').value = product.price.replace('Rp', '').replace('.', '');
+        localStorage.removeItem('selectedProduct'); // Clear the data after using it
+      }
+    });
+
+    
+document.addEventListener('DOMContentLoaded', function() {
+  const submitButton = document.querySelector('input[type="submit"]');
+  submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    document.getElementById('popup').classList.remove('hide');
+  });
+
+  document.getElementById('close-popup').addEventListener('click', function() {
+
+    document.getElementById('popup').classList.add('hide');
+
+    document.querySelector('form').submit();
+    
+  });
+});
+    </script>
+</body>
+</html>
